@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-COLORS = ['#BA2A81', '#098C26', '#CB2A00', '#270456']
+COLORS = ['#390099', '#9e0059']
 COLOR_INDEX = 0
 
 # Return a new color from the COLORS list
@@ -13,21 +13,21 @@ def get_color():
     return color
 
 # Display a line plot
-def plot(y, x=None, title='', xlabel='', ylabel='', show_xticks=True, show_yticks=False, show=True):
+def plot(y, x=None, figsize=(20, 4), title='', xlabel='', ylabel='', show_xticks=True, show_yticks=False, show=True):
     if x is None:
         x = range(len(y))
     
-    plt.figure(figsize=(20, 4))
+    plt.figure(figsize=figsize)
     plot_axes(title, xlabel, ylabel, show_xticks, show_yticks, x, y)
-    plt.plot(y, c=get_color(), alpha=0.8)
+    plt.plot(x, y, c=get_color(), alpha=0.8)
     
     if show:
         plt.show()
     
 # Display a heat map plot (imshow)
-def heatmap(data, title='', xlabel='', ylabel='', show_xticks=True, show_yticks=False):
-    plt.figure(figsize=(20, 4))
-    plot_axes(title, xlabel, ylabel, show_xticks, show_yticks, range(len(data[0])))
+def heatmap(data, figsize=(20, 4), title='', xlabel='', ylabel='', show_xticks=True, show_yticks=False):
+    plt.figure(figsize=figsize)
+    plot_axes(title, xlabel, ylabel, show_xticks, show_yticks, range(len(data[0])), range(len(data)))
     plt.imshow(data, aspect='auto')
     plt.show()
     
@@ -41,7 +41,7 @@ def plot_axes(title, xlabel, ylabel, show_xticks, show_yticks, x=[], y=[]):
     
     ax.axes.xaxis.set_ticklabels([])
     if show_xticks:
-        ax.axes.xaxis.set_ticks([0, len(x) - 1])
+        ax.axes.xaxis.set_ticks([int(np.min(x)), int(np.max(x))])
         ax.axes.xaxis.set_ticklabels([int(np.min(x)), int(np.max(x))])
     
     ax.axes.yaxis.set_ticklabels([])
