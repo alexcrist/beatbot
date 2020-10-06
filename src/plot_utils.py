@@ -4,6 +4,9 @@ from matplotlib import pyplot as plt
 COLORS = ['#390099', '#9e0059']
 COLOR_INDEX = 0
 
+TITLE_SIZE = 18
+AXIS_LABEL_SIZE = 16
+
 # Return a new color from the COLORS list
 def get_color():
     global COLORS, COLOR_INDEX
@@ -33,11 +36,11 @@ def heatmap(data, figsize=(20, 4), title='', xlabel='', ylabel='', show_xticks=T
     
 # Display titles, axes, and labels for a plot
 def plot_axes(title, xlabel, ylabel, show_xticks, show_yticks, x=[], y=[]):
-    plt.title(title, fontsize=14, loc='left')
+    plt.title(title, fontsize=TITLE_SIZE, loc='left')
     
     ax = plt.gca()
-    ax.axes.set_xlabel(xlabel)
-    ax.axes.set_ylabel(ylabel)
+    ax.axes.set_xlabel(xlabel, fontsize=AXIS_LABEL_SIZE)
+    ax.axes.set_ylabel(ylabel, fontsize=AXIS_LABEL_SIZE)
     
     ax.axes.xaxis.set_ticklabels([])
     if show_xticks:
