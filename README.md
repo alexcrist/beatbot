@@ -1,1 +1,3 @@
-### https://alexcrist.github.io/beatbot
+# 🎤 Beatbot
+
+### Project homepage: https://alexcrist.github.io/beatbot
